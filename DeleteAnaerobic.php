@@ -8,6 +8,11 @@
     $userDate = isset($_POST["userDate"]) ? $_POST["userDate"] : "";
     $eng = isset($_POST["eng"]) ? $_POST["eng"] : "";
 
+    $start = isset($_POST["start"]) ? $_POST["start"] : "";
+    $end = isset($_POST["end"]) ? $_POST["end"] : "";
+
+    $userSex = isset($_POST["userSex"]) ? $_POST["userSex"] : "";
+
     $response = false;
 
     if($userID != "") {
@@ -24,6 +29,23 @@
         $result2 = mysqli_query($con,$sql2);
 
         $response = true;
+    }
+
+    if($userID != "") {
+        $sql20 = "UPDATE userTBL SET userTBL.anaerobicScore = (SELECT SUM(anaerobicTBL.Score) FROM anaerobicTBL WHERE anaerobicTBL.userID = userTBL.userID AND userDate > '$start' AND userDate < '$end')";
+        mysqli_query($con,$sql20);
+
+        $sql30 = "UPDATE userTBL SET userTBL.Score = (SELECT SUM(userTBL.anaerobicScore + userTBL.aerobicScore))";
+        mysqli_query($con,$sql30);
+
+        if($userSex == 0) {
+            $sql40 = "UPDATE MaleTBL SET MaleTBL.Score = (SELECT userTBL.Score FROM userTBL WHERE userTBL.userID = MaleTBL.userID)";
+            mysqli_query($con,$sql40);
+        }
+        else {
+            $sql50 = "UPDATE FemaleTBL SET FemaleTBL.Score = (SELECT userTBL.Score FROM userTBL WHERE userTBL.userID = FemaleTBL.userID)";
+            mysqli_query($con,$sql50);
+        }
     }
     
     echo json_encode($response);
