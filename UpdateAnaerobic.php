@@ -59,7 +59,7 @@
     } else {
         $sql10 = "INSERT INTO $userID VALUES('".$num."','".$userExercise."','".$userDate."','".$userSet."','".$userWeight."','".$userCount."','".$userDistance."','".$userTime."')";
         mysqli_query($con,$sql10);
-    }*/
+    }
 //운동별 테이블
     $result2 = mysqli_query($con,"SELECT Score FROM $eng WHERE userID = '$userID'");
     if (!mysqli_num_rows($result2)>0) {
@@ -76,7 +76,9 @@
         $Score2 = $row['Score'] + $Score;
         $sql8 = "UPDATE $eng SET Score = '$Score2' WHERE userID = '$userID'";
         mysqli_query($con,$sql8);
-    }
+    }*/
+    $sql7 = "INSERT INTO $eng VALUES('".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
+    mysqli_query($con,$sql7);
 //무산소 테이블
     if($userSex != "") {
         $sql10 = "UPDATE $userID SET userDate = '$userDate', userTime = '$userTime', userState = '$userState' WHERE uuid = '$uuid'";
