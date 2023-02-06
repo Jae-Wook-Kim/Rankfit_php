@@ -61,24 +61,14 @@
         mysqli_query($con,$sql10);
     }*/
 //운동별 테이블
-    $result2 = mysqli_query($con,"SELECT Score FROM $eng WHERE userID = '$userID'");
-    if (!mysqli_num_rows($result2)>0) {
-        $sql9 = "SELECT userAge, userWD FROM userTBL WHERE userID = '$userID'";
-        $result9 = mysqli_query($con,$sql9);
-        $row9 = mysqli_fetch_array($result9);
-        $age = $row9['userAge'];
-        $WD = $row9['userWD'];
+    $sql9 = "SELECT userAge, userWD FROM userTBL WHERE userID = '$userID'";
+    $result9 = mysqli_query($con,$sql9);
+    $row9 = mysqli_fetch_array($result9);
+    $age = $row9['userAge'];
+    $WD = $row9['userWD'];
 
-        $sql7 = "INSERT INTO $eng VALUES('".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
-        mysqli_query($con,$sql7);
-    } /*else {
-        $row = mysqli_fetch_array($result2);
-        $Score2 = $row['Score'] + $Score;
-        $sql8 = "UPDATE $eng SET Score = '$Score2' WHERE userID = '$userID'";
-        mysqli_query($con,$sql8);
-    }*/
-    //$sql7 = "INSERT INTO $eng VALUES('".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
-    //mysqli_query($con,$sql7);
+    $sql7 = "INSERT INTO $eng VALUES('".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
+    mysqli_query($con,$sql7);
 //무산소 테이블
     if($userSex != "") {
         $sql10 = "UPDATE $userID SET userDate = '$userDate', userTime = '$userTime', userState = '$userState' WHERE uuid = '$uuid'";
