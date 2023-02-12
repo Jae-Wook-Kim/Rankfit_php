@@ -4,7 +4,9 @@
     mysqli_query($con,'SET NAMES utf8');
 
     $name = $_POST["name"];
-    $data = file_get_contents($name);
+    $data = $_POST["data"];
+    // $data = file_get_contents($name);
+    
     // $floder_path = "images/" . time() . ".png";
     // $data = str_replace('data:image/png;base64,', '', $picture);
     // $data = str_replace(' ', '+', $data);
