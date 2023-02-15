@@ -10,7 +10,7 @@
         $sql = "SELECT image_name FROM images WHERE image_name = '$image_name'";
         $result = mysqli_query($con,$sql);
 
-        $row = mysqli_fetch_array($result)
+        $row = mysqli_fetch_array($result);
         $image_data = $row['image_name'];
 
         header("Content-Type: image/jpeg");
