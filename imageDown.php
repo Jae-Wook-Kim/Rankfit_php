@@ -9,7 +9,8 @@
     $result2 = mysqli_query($con,$sql2);
     $row2 = mysqli_fetch_array($result2);
     
-    $image_name = $row2['userID'];
+    // $image_name = $row2['userID'];
+    $image_name = isset($row2['userID']) ? $row2['userID'] : "";
 
     // $image_name = isset($_POST["image_name"]) ? $_POST["image_name"] : "";
 
