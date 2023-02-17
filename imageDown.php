@@ -8,13 +8,10 @@
     $sql2 = "SELECT userID FROM userTBL WHERE userNickname = '$nickname'";
     $result2 = mysqli_query($con,$sql2);
     $row2 = mysqli_fetch_array($result2);
-    
-    // $image_name = $row2['userID'];
-    $image_name = isset($row2['userID']) ? $row2['userID'] : "";
 
-    // $image_name = isset($_POST["image_name"]) ? $_POST["image_name"] : "";
-
-    if($image_name != "") {
+    if($row2) {
+        $image_name = $row2['userID'];
+    // $image_name = isset($row2['userID']) ? $row2['userID'] : "";
 
         $sql = "SELECT image_data FROM images WHERE image_name LIKE '$image_name%'";
         $result = mysqli_query($con,$sql);
