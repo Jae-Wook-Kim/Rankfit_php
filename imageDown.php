@@ -18,9 +18,10 @@
 
         $sql = "SELECT image_data FROM images WHERE image_name LIKE '$image_name%'";
         $result = mysqli_query($con,$sql);
+        $row = mysqli_fetch_array($result);
 
-        if($result) {
-            $row = mysqli_fetch_array($result);
+        if($row) {
+            // $row = mysqli_fetch_array($result);
             $image_data = $row['image_data'];
 
             header("Content-Type: image/jpeg");
