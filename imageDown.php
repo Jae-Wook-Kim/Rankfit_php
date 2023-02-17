@@ -18,12 +18,17 @@
         $sql = "SELECT image_data FROM images WHERE image_name LIKE '$image_name%'";
         $result = mysqli_query($con,$sql);
 
-        $row = mysqli_fetch_array($result);
-        $image_data = $row['image_data'];
+        if($result) {
+            $row = mysqli_fetch_array($result);
+            $image_data = $row['image_data'];
 
-        header("Content-Type: image/jpeg");
-        // echo "Success";
-        echo $image_data;
+            header("Content-Type: image/jpeg");
+            // echo "Success";
+            echo $image_data;
+        }
+        else {
+            echo "There is no saved image!!"
+        }
     }
     else {
         echo "Fail";
