@@ -27,7 +27,7 @@
             echo $image_data;
         }
         else {
-            echo "There is no saved image!!"
+            echo "There is no saved image!!";
         }
     }
     else {
