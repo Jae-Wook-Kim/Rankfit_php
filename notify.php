@@ -20,12 +20,16 @@
         $result6 = mysqli_query($con,$sql6);
         $row6 = mysqli_fetch_array($result6);
         if ($row6) {
-            echo "Already reported it!!";
-        }
-        else {
+            // echo "Already reported it!!";
             $statement = mysqli_prepare($con, "INSERT INTO notify VALUES (?,?,?,?,?)");
             mysqli_stmt_bind_param($statement, "sssss", $Index, $ID, $reason, $userID, $date);
             mysqli_stmt_execute($statement);
+        }
+        else {
+            // $statement = mysqli_prepare($con, "INSERT INTO notify VALUES (?,?,?,?,?)");
+            // mysqli_stmt_bind_param($statement, "sssss", $Index, $ID, $reason, $userID, $date);
+            // mysqli_stmt_execute($statement);
+            echo "Already reported it!!";
         }
 
         $response = true;
