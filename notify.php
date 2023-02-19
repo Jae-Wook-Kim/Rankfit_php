@@ -16,7 +16,7 @@
     $row5 = mysqli_fetch_array($result5);
     if ($row5) {
         $ID = $row5['userID'];
-        $sql6 = "SELECT * FROM notify WHERE ID = '$ID' AND reason = '$reason' AND userID = '$userID'";
+        $sql6 = "SELECT * FROM notify WHERE ID = '$ID' AND reason = $reason AND userID = '$userID'";
         $result6 = mysqli_query($con,$sql6);
         $row6 = mysqli_fetch_array($result6);
         if ($row6) {
