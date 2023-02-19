@@ -14,13 +14,14 @@
     $sql5 = "SELECT userID FROM userTBL WHERE userNickname = '$nickname'";
     $result5 = mysqli_query($con,$sql5);
     $row5 = mysqli_fetch_array($result5);
-    $ID = $row5['userID'];
+    if ($row5) {
+        $ID = $row5['userID'];
+        $statement = mysqli_prepare($con, "INSERT INTO notify VALUES (?,?,?,?,?)");
+        mysqli_stmt_bind_param($statement, "sssss", $Index, $ID, $reason, $userID, $date);
+        mysqli_stmt_execute($statement);
 
-    $statement = mysqli_prepare($con, "INSERT INTO notify VALUES (?,?,?,?,?)");
-    mysqli_stmt_bind_param($statement, "sssss", $Index, $ID, $reason, $userID, $date);
-    mysqli_stmt_execute($statement);
-
-    $response = true;
+        $response = true;
+    }
 
     echo json_encode($response);
 ?>
