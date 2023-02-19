@@ -21,6 +21,7 @@
         $row6 = mysqli_fetch_array($result6);
         if ($row6) {
             echo "Already reported it!!";
+            return;
         }
         else {
             $statement = mysqli_prepare($con, "INSERT INTO notify VALUES (?,?,?,?,?)");
