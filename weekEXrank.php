@@ -5,8 +5,8 @@
 
     $sql = "SELECT * FROM running";
     $result = mysqli_query($con,$sql);
-    $tmp = mysqli_num_rows($result)
+    $tmp = mysqli_num_rows($result);
     
     echo $tmp;
-    mysqli_close($con)
+    mysqli_close($con);
 ?>
