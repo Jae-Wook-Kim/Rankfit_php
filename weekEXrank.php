@@ -10,7 +10,7 @@
     // $result = mysqli_query($con,$sql);
     // $tmp = mysqli_num_rows($result);
 
-    $sql = "(SELECT userExercise, COUNT(*) cnt FROM anaerobicTBL WHERE userState = '1' GROUP BY userEXercise) UNION (SELECT userExercise, COUNT(*) cnt FROM aerobicTBL WHERE userState = '1' GROUP BY userEXercise) ORDER BY cnt DESC";
+    $sql = "(SELECT userExercise, COUNT(*) cnt FROM anaerobicTBL WHERE userState = '1' GROUP BY userEXercise) UNION (SELECT userExercise, COUNT(*) cnt FROM aerobicTBL WHERE userState = '1' GROUP BY userEXercise) ORDER BY cnt DESC LIMIT 10";
     $result = mysqli_query($con,$sql);
     
     $test10 = array();
