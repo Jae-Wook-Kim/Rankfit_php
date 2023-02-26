@@ -9,14 +9,14 @@
     (int)$age = (int)($userAge / 10) * 10;
     (int)$age2 = $age + 10;
 
-    //echo $age;
-    //echo $age2;
-
     $test10 = array();
     $test11 = [];
     $response3 = array();
     $response2 = array();
     (int)$count = -1;
+
+    $sql6 = "UPDATE userTBL SET userAge = '$userAge' WHERE userID = '$userID'";
+    $result6 = mysqli_query($con,$sql5);
 
     $sql5 = "SELECT userWD FROM userTBL WHERE userID = '$userID'";
     $result5 = mysqli_query($con,$sql5);
@@ -25,8 +25,7 @@
 
     $sql3 = "UPDATE userTBL a inner join (SELECT userID, Score, dense_rank() over (order by Score desc) as Ranking FROM userTBL WHERE userAge >= '$age' AND userAge < '$age2' AND userWD = '$WD' AND userSex = '$userSex') b on b.userID = a.userID SET a.CustomRank = b.Ranking";
     $result3 = mysqli_query($con,$sql3);
-
-    //$sql = "SELECT userID, Score, CustomRank FROM userTBL WHERE userAge >= '$age' AND userAge < '$age2' AND userWD = '$WD' AND userSex = '$userSex' LIMIT 100";
+    
     $sql = "SELECT userID, Score, dense_rank() over (order by Score desc) CustomRank FROM userTBL WHERE userAge >= '$age' AND userAge < '$age2' AND userWD = '$WD' AND userSex = '$userSex' LIMIT 100";
     $result = mysqli_query($con,$sql);
 

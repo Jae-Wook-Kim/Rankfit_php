@@ -8,14 +8,14 @@
     (int)$age = (int)($userAge / 10) * 10;
     (int)$age2 = $age + 10;
 
-    //echo $age;
-    //echo $age2;
-
     $test10 = array();
     $test11 = [];
     $response3 = array();
     $response2 = array();
     (int)$count = -1;
+
+    $sql5 = "UPDATE userTBL SET userAge = '$userAge' WHERE userID = '$userID'";
+    $result5 = mysqli_query($con,$sql5);
 
     $sql3 = "UPDATE userTBL a inner join (SELECT userID, Score, dense_rank() over (order by Score desc) as Ranking FROM userTBL WHERE userAge >= '$age' AND userAge < '$age2') b on b.userID = a.userID SET a.AgeRank = b.Ranking";
     $result3 = mysqli_query($con,$sql3);
@@ -26,11 +26,6 @@
     $sql4 = "SELECT Score, AgeRank FROM userTBL WHERE userID = '$userID'";
     $result4 = mysqli_query($con,$sql4);
     $row3 = mysqli_fetch_array($result4);
-
-    //$response2["My_Ranking"] = $row3['AgeRank'];
-    //$response2["My_Score"] = $row3['Score'];
-
-    //$test10 = $response2;
 
     while ($row = mysqli_fetch_array($result)) {
         $count += 1;
@@ -48,16 +43,10 @@
     }
     $test10["All"] = $test11;
 
-    //$response4 = array();
-    //$response4["count"] = $count;
-    //$test10 += $response4;
-
     $response2["My_Ranking"] = (string)$row3['AgeRank'];
     $response2["My_Score"] = (string)$row3['Score'];
-    //$response2["count"] = (string)$count;
 
     $test10["My"] = $response2;
-    //var_dump($test10);
 
     $json = json_encode($test10, JSON_UNESCAPED_UNICODE);
     echo $json;
