@@ -3,10 +3,9 @@
     $con = mysqli_connect($db_host, $db_user, $db_password, $db_name) or die("MySQL Connection Failed !!");
     mysqli_query($con,'SET NAMES utf8');
 
-    //$test10 = array();
+    $test10 = array();
     $test11 = [];
     $response3 = array();
-    //$response2 = array();
 
     $sql = "SELECT * FROM noticeboard";
     $result = mysqli_query($con,$sql);
@@ -18,7 +17,9 @@
 
         $test11[] = $response3;
     }
+    $test10["Notice"] = $test11;
 
     $json = json_encode($test11, JSON_UNESCAPED_UNICODE);
     echo $json;
+    mysqli_close($con);
 ?>
