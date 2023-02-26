@@ -20,7 +20,7 @@
     $end = isset($_POST["end"]) ? $_POST["end"] : 0;
 
     $$sql6 = "UPDATE userTBL SET userAge = '$userAge' WHERE userID = '$userID'";
-    $result6 = mysqli_query($con,$sql5);
+    $result6 = mysqli_query($con,$sql6);
 
     $sql5 = "SELECT userWD FROM $eng WHERE userID = '$userID'";
     $result5 = mysqli_query($con,$sql5);
