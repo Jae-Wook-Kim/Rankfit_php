@@ -19,7 +19,7 @@
     }
     $test10["Notice"] = $test11;
 
-    $json = json_encode($test11, JSON_UNESCAPED_UNICODE);
+    $json = json_encode($test10, JSON_UNESCAPED_UNICODE);
     echo $json;
     mysqli_close($con);
 ?>
