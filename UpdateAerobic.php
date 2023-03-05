@@ -42,25 +42,6 @@
         mysqli_query($con,$sql6);
     }
 
-    /*$result3 = mysqli_query($con,"SHOW TABLES LIKE '$userID'");
-    if (!mysqli_num_rows($result)>0) {
-        $sql6 = "CREATE TABLE $userID (
-            num int NOT NULL AUTO_INCREMENT,
-            userExercise varchar(20) NOT NULL,
-            userDate int NOT NULL,
-            userSet int NULL,
-            userWeight float NULL,
-            userCount int NULL,
-            userDistance double NULL,
-            userTime int NULL,
-            PRIMARY KEY (num)
-            )";
-        mysqli_query($con,$sql6);
-    } else {
-        $sql10 = "INSERT INTO $userID VALUES('".$num."','".$userExercise."','".$userDate."','".$userSet."','".$userWeight."','".$userCount."','".$userDistance."','".$userTime."')";
-        mysqli_query($con,$sql10);
-    }*/
-
     $sql9 = "SELECT userAge, userWD FROM userTBL WHERE userID = '$userID'";
     $result9 = mysqli_query($con,$sql9);
     $row9 = mysqli_fetch_array($result9);
