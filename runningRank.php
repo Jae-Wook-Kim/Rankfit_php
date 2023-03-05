@@ -4,10 +4,10 @@
     mysqli_query($con,'SET NAMES utf8');
 
     $userID = isset($_POST["userID"]) ? $_POST["userID"] : "";
-    $start = isset($_POST["start"]) ? $_POST["start"] : 0;
-    $end = isset($_POST["end"]) ? $_POST["end"] : 0;
+    // $start = isset($_POST["start"]) ? $_POST["start"] : 0;
+    // $end = isset($_POST["end"]) ? $_POST["end"] : 0;
 
-    $sql = "SELECT userID, SUM(Score) tmp FROM running WHERE userDate > '$start' AND userDate < '$end' GROUP BY userID ORDER BY tmp DESC LIMIT 100";
+    $sql = "SELECT userID, SUM(Score) tmp FROM running GROUP BY userID ORDER BY tmp DESC LIMIT 100";
     $result = mysqli_query($con,$sql);
     
     $test10 = array();
