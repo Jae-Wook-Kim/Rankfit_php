@@ -25,8 +25,7 @@
         while ($row = mysqli_fetch_array($result)) {
             $ID = $row['userID'];
             $sql2 = "SELECT userNickname FROM userTBL WHERE userID = '$ID'";
-            $result2 = mysqli_query($con,$sql2);
-            
+            $result2 = mysqli_query($con,$sql2);            
             $row2 = mysqli_fetch_array($result2);
 
             $response3["Ranking"] = $row['Ranking'];
