@@ -3,6 +3,9 @@
     $con = mysqli_connect($db_host, $db_user, $db_password, $db_name) or die("MySQL Connection Failed !!");
     mysqli_query($con,'SET NAMES utf8');
 
+    $start = isset($_POST["start"]) ? $_POST["start"] : 0;
+    $end = isset($_POST["end"]) ? $_POST["end"] : 0;
+
     $sql = "SELECT userID, SUM(Score) tmp FROM running WHERE userDate > '$start' AND userDate < '$end' GROUP BY userID ORDER BY tmp DESC LIMIT 100";
     $result = mysqli_query($con,$sql);
     
