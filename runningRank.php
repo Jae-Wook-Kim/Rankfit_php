@@ -30,7 +30,7 @@
 
         $response3["Nickname"] = $row2['userNickname'];
         $response3["Score"] = $row['tmp'];
-        $response3["Rank"] = (string)$count;
+        $response3["Ranking"] = (string)$count;
 
         $test11[] = $response3;
     }
