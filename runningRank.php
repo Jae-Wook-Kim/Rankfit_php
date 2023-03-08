@@ -34,8 +34,23 @@
 
         $test11[] = $response3;
     }
+
     $test10["All"] = $test11;
     $test10["My"] = $response2;
+
+    if ($test10["All"] == []) {
+        $response2["My_Ranking"] = "0";
+        $response2["My_Score"] = "0";
+
+        $response3["Nickname"] = "없음";
+        $response3["Score"] = "0";
+        $response3["Ranking"] = "0";
+
+        $test11[] = $response3;
+
+        $test10["All"] = $test11;
+        $test10["My"] = $response2;
+    }
 
     $json = json_encode($test10, JSON_UNESCAPED_UNICODE);
     echo $json;
