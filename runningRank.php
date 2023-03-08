@@ -42,7 +42,7 @@
         $response2["My_Ranking"] = "0";
         $response2["My_Score"] = "0";
 
-        $response3["Nickname"] = "없음";
+        $response3["Nickname"] = "순위 없음";
         $response3["Score"] = "0";
         $response3["Ranking"] = "0";
 
