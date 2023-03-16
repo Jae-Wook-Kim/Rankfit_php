@@ -15,7 +15,7 @@
         $sql3 = "UPDATE MaleTBL a inner join (SELECT userID, Score, dense_rank() over (order by Score desc) as Ranking FROM MaleTBL) b on b.userID = a.userID SET a.Ranking = b.Ranking";
         $result3 = mysqli_query($con,$sql3);
 
-        $sql = "SELECT userID, Score, dense_rank() over (order by Score desc) as Ranking FROM MaleTBL LIMIT 100";
+        $sql = "SELECT userID, Score, dense_rank() over (order by Score desc) as Ranking FROM MaleTBL WHERE Score != 0 LIMIT 100";
         $result = mysqli_query($con,$sql);
 
         $sql4 = "SELECT Score, Ranking FROM MaleTBL WHERE userID = '$userID'";
