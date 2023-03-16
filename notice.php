@@ -19,6 +19,17 @@
     }
     $test10["Notice"] = $test11;
 
+    if ($test10["Notice"] == []) {
+        $response3["title"] = "공지사항 없음";
+        $response3["content"] = "없음";
+        $response3["register_day"] = " ";
+
+        $test11[] = $response3
+
+        $test10["All"] = $test11;
+        $test10["My"] = $response2;
+    }
+
     header('Content-Type: application/json; charset=utf-8');
     $json = json_encode($test10, JSON_UNESCAPED_UNICODE);
     echo $json;
