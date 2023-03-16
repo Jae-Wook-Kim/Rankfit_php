@@ -39,10 +39,13 @@
     $test10["My"] = $response2;
 
     if ($test10["All"] == []) {
+        $sql3 = "SELECT userNickname FROM userTBL WHERE userID = '$userID'";
+        $result3 = mysqli_query($con,$sql3);
+        $row3 = mysqli_fetch_array($result3);
         $response2["My_Ranking"] = "0";
         $response2["My_Score"] = "0";
 
-        $response3["Nickname"] = "순위 없음";
+        $response3["Nickname"] = $row3['userNickname'];
         $response3["Score"] = "0";
         $response3["Ranking"] = "0";
 
