@@ -26,8 +26,7 @@
 
         $test11[] = $response3
 
-        $test10["All"] = $test11;
-        $test10["My"] = $response2;
+        $test10["Notice"] = $test11;
     }
 
     header('Content-Type: application/json; charset=utf-8');
