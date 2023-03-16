@@ -20,9 +20,9 @@
     $test10["Notice"] = $test11;
 
     if ($test10["Notice"] == []) {
-        $response3["title"] = "공지사항 없음";
-        $response3["content"] = "없음";
-        $response3["register_day"] = " ";
+        $response3["title"] = "랭크핏에 오신 것을 환영합니다.";
+        $response3["content"] = "랭크핏에 오신 것을 환영합니다.";
+        $response3["register_day"] = "23/03/16";
 
         $test11[] = $response3;
 
