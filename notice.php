@@ -24,7 +24,7 @@
         $response3["content"] = "없음";
         $response3["register_day"] = " ";
 
-        $test11[] = $response3
+        $test11[] = $response3;
 
         $test10["Notice"] = $test11;
     }
