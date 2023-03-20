@@ -20,7 +20,7 @@
         while ($row = mysqli_fetch_array($result)) {
             if($row['userSet'] != "-1") {
                 $response3["Exercise"] = $row['userExercise'];
-                $response3["category"] = $row['category'];
+                $response3["Category"] = $row['category'];
                 $response3["Date"] = $row['userDate'];
                 $response3["Set"] = $row['userSet'];
                 $response3["Weight"] = $row['userWeight'];
