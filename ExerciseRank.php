@@ -1,7 +1,7 @@
 <?php
     require("dbset.php");
     $con = mysqli_connect($db_host, $db_user, $db_password, $db_name) or die("MySQL Connection Failed !!");
-    mysqli_query($con,'SET NAMES utf8');
+    // mysqli_query($con,'SET NAMES utf8');
 
     $userID = isset($_POST["userID"]) ? $_POST["userID"] : "";
     $userSex = isset($_POST["userSex"]) ? $_POST["userSex"] : 0;

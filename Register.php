@@ -24,6 +24,7 @@
         $sql6 = "CREATE TABLE $userID (
             num int NOT NULL AUTO_INCREMENT,
             userExercise varchar(20) NOT NULL,
+            category varchar(5) NULL,
             userDate int NOT NULL,
             userSet int NULL,
             userWeight float NULL,

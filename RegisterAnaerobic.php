@@ -4,6 +4,7 @@
     
     $Index = NULL;
     $userID = isset($_POST["userID"]) ? $_POST["userID"] : "";
+    $category = isset($_POST["category"]) ? $_POST["category"] : "";
     $userExercise = isset($_POST["userExercise"]) ? $_POST["userExercise"] : "";
     $userDate = isset($_POST["userDate"]) ? $_POST["userDate"] : "";
     $userSet = isset($_POST["userSet"]) ? $_POST["userSet"] : "";
@@ -17,7 +18,7 @@
 
     $userDistance = isset($_POST["userDistance"])? $_POST["userDistance"] : -1;
     
-    $sql = "INSERT INTO anaerobicTBL VALUES('".$Index."','".$userID."','".$userExercise."','".$userDate."','".$userSet."','".$userWeight."','".$userCount."','".$exTime."','".$Score."','".$userTime."','".$userState."','".$uuid."')";
+    $sql = "INSERT INTO anaerobicTBL VALUES('".$Index."','".$userID."','".$category."','".$userExercise."','".$userDate."','".$userSet."','".$userWeight."','".$userCount."','".$exTime."','".$Score."','".$userTime."','".$userState."','".$uuid."')";
 
     $ret = mysqli_query($con, $sql);
 
@@ -31,7 +32,7 @@
 
     $result3 = mysqli_query($con,"SHOW TABLES LIKE '$userID'");
     if (mysqli_num_rows($result3)>0) {
-        $sql10 = "INSERT INTO $userID VALUES('".$Index."','".$userExercise."','".$userDate."','".$userSet."','".$userWeight."','".$userCount."','".$userDistance."','".$userTime."','".$userState."','".$uuid."')";
+        $sql10 = "INSERT INTO $userID VALUES('".$Index."','".$userExercise."','".$category."','".$userDate."','".$userSet."','".$userWeight."','".$userCount."','".$userDistance."','".$userTime."','".$userState."','".$uuid."')";
         mysqli_query($con,$sql10);
     }
     mysqli_close($con);
