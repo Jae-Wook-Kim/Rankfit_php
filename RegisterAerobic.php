@@ -17,7 +17,7 @@
     $userWeight = isset($_POST["userWeight"]) ? $_POST["userWeight"] : -1;
     $userCount = isset($_POST["userCount"]) ? $_POST["userCount"] : -1;
     
-    $sql = "INSERT INTO aerobicTBL VALUES('".$Index."','".$userID."','".$category."','".$userExercise."','".$userDate."','".$userDistance."','".$userTime."','".$Score."','".$userState."','".$uuid."')";
+    $sql = "INSERT INTO aerobicTBL VALUES('".$Index."','".$userID."','".$userExercise."','".$userDate."','".$userDistance."','".$userTime."','".$Score."','".$userState."','".$uuid."')";
     $ret = mysqli_query($con, $sql);
 
     if ($ret) {
