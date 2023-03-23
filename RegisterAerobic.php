@@ -30,7 +30,7 @@
 
     $result3 = mysqli_query($con,"SHOW TABLES LIKE '$userID'");
     if (mysqli_num_rows($result3)>0) {
-        $sql10 = "INSERT INTO $userID VALUES('".$Index."','".$userExercise."','".$userDate."','".$userSet."','".$userWeight."','".$userCount."','".$userDistance."','".$userTime."','".$userState."','".$uuid."')";
+        $sql10 = "INSERT INTO $userID VALUES('".$Index."','".$userExercise."','".$category."','".$userDate."','".$userSet."','".$userWeight."','".$userCount."','".$userDistance."','".$userTime."','".$userState."','".$uuid."')";
         mysqli_query($con,$sql10);
     }
 
