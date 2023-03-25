@@ -7,7 +7,7 @@
     // $start = isset($_POST["start"]) ? $_POST["start"] : 0;
     // $end = isset($_POST["end"]) ? $_POST["end"] : 0;
 
-    $sql = "SELECT userID, SUM(Score) tmp FROM running GROUP BY userID ORDER BY tmp DESC LIMIT 100";
+    $sql = "SELECT userID, SUM(Score) tmp FROM running WHERE Score != 0 GROUP BY userID ORDER BY tmp DESC LIMIT 100";
     $result = mysqli_query($con,$sql);
     
     $test10 = array();
