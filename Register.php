@@ -30,7 +30,7 @@
             userWeight float NULL,
             userCount int NULL,
             userDistance double NULL,
-            exTime double NULL,
+            -- exTime double NULL,
             userTime int NULL,
             userState tinyint(1) NULL,
             uuid varchar(40) NULL,
