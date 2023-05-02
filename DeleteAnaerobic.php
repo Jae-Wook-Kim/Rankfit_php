@@ -7,9 +7,10 @@
     $userExercise = isset($_POST["userExercise"]) ? $_POST["userExercise"] : "";
     $userDate = isset($_POST["userDate"]) ? $_POST["userDate"] : "";
     $eng = isset($_POST["eng"]) ? $_POST["eng"] : "";
+    $ko = isset($_POST["ko"]) ? $_POST["ko"] : "";
 
-    $start = isset($_POST["start"]) ? $_POST["start"] : "";
-    $end = isset($_POST["end"]) ? $_POST["end"] : "";
+    // $start = isset($_POST["start"]) ? $_POST["start"] : "";
+    // $end = isset($_POST["end"]) ? $_POST["end"] : "";
 
     $userSex = isset($_POST["userSex"]) ? $_POST["userSex"] : "";
 
@@ -25,14 +26,14 @@
         $sql = "DELETE FROM $userID WHERE userExercise = '$userExercise' AND userDate = '$userDate'";
         $result = mysqli_query($con,$sql);
 
-        $sql2 = "DELETE FROM $eng WHERE userID = '$userID' AND userDate = '$userDate'";
-        $result2 = mysqli_query($con,$sql2);
+        // $sql2 = "DELETE FROM $eng WHERE userID = '$userID' AND userDate = '$userDate'";
+        // $result2 = mysqli_query($con,$sql2);
 
         $response = true;
     }
 
     if($userID != "") {
-        $sql20 = "UPDATE userTBL SET userTBL.anaerobicScore = (SELECT SUM(anaerobicTBL.Score) FROM anaerobicTBL WHERE anaerobicTBL.userID = userTBL.userID AND userDate > '$start' AND userDate < '$end')";
+        $sql20 = "UPDATE userTBL SET userTBL.anaerobicScore = (SELECT SUM(anaerobicTBL.Score) FROM anaerobicTBL WHERE anaerobicTBL.userID = userTBL.userID)";
         mysqli_query($con,$sql20);
 
         $sql30 = "UPDATE userTBL SET userTBL.Score = (SELECT SUM(userTBL.anaerobicScore + userTBL.aerobicScore))";
@@ -47,6 +48,9 @@
             mysqli_query($con,$sql50);
         }
     }
+
+    $sql11 = "UPDATE $eng a LEFT OUTER JOIN (SELECT userID, SUM(Score) as tmp FROM anaerobicTBL WHERE userExercise = '$ko' GROUP BY userID) b on b.userID = a.userID SET a.Score = b.tmp";
+    mysqli_query($con,$sql11);
     
     echo json_encode($response);
 ?>
