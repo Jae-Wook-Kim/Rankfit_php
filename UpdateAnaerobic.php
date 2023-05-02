@@ -38,7 +38,7 @@
             userDate int NOT NULL,
             Score float NOT NULL,
             CustomRank int NULL,
-            PRIMARY KEY (userID)
+            PRIMARY KEY (num)
             )";
         mysqli_query($con,$sql6);
     }

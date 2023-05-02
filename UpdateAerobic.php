@@ -3,6 +3,7 @@
     $con = mysqli_connect($db_host, $db_user, $db_password, $db_name) or die("MySQL Connection Failed !!");
     mysqli_query($con,'SET NAMES utf8');
     
+    $num = NULL;
     $userDistance = isset($_POST["userDistance"])? $_POST["userDistance"] : -1;
     $Score = isset($_POST["Score"])? $_POST["Score"] : "";
     $userTime = isset($_POST["userTime"])? $_POST["userTime"] : -1;
@@ -21,8 +22,6 @@
     $start = isset($_POST["start"]) ? $_POST["start"] : 0;
     $end = isset($_POST["end"]) ? $_POST["end"] : 0;
 
-    //$num = NULL;
-
     $CustomRank = 0;
 
     $response = false;
@@ -30,6 +29,7 @@
     $result = mysqli_query($con,"SHOW TABLES LIKE '$eng'");
     if (!mysqli_num_rows($result)>0) {
         $sql6 = "CREATE TABLE $eng (
+            num int NOT NULL AUTO_INCREMENT,
             userID varchar(30) NOT NULL,
             userSex int NOT NULL,
             userAge int NOT NULL,
@@ -37,7 +37,7 @@
             userDate int NOT NULL,
             Score float NOT NULL,
             CustomRank int NULL,
-            PRIMARY KEY (userID)
+            PRIMARY KEY (num)
             )";
         mysqli_query($con,$sql6);
     }
@@ -48,7 +48,7 @@
     $age = $row9['userAge'];
     $WD = $row9['userWD'];
 
-    $sql7 = "INSERT INTO $eng VALUES('".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
+    $sql7 = "INSERT INTO $eng VALUES('".$num."','".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
     mysqli_query($con,$sql7);
 
     if($userSex != "") {
