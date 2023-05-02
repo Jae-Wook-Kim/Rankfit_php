@@ -10,8 +10,8 @@
     (int)$age2 = $age + 10;
     $eng = isset($_POST["eng"]) ? $_POST["eng"] : "";
 
-    $start = isset($_POST["start"]) ? $_POST["start"] : 0;
-    $end = isset($_POST["end"]) ? $_POST["end"] : 0;
+    // $start = isset($_POST["start"]) ? $_POST["start"] : 0;
+    // $end = isset($_POST["end"]) ? $_POST["end"] : 0;
 
     $test10 = array();
     $test11 = [];

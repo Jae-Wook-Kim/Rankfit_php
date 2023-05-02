@@ -16,8 +16,8 @@
     $response2 = array();
     (int)$count = -1;
 
-    $start = isset($_POST["start"]) ? $_POST["start"] : 0;
-    $end = isset($_POST["end"]) ? $_POST["end"] : 0;
+    // $start = isset($_POST["start"]) ? $_POST["start"] : 0;
+    // $end = isset($_POST["end"]) ? $_POST["end"] : 0;
 
     $sql6 = "UPDATE userTBL SET userAge = '$userAge' WHERE userID = '$userID'";
     $result6 = mysqli_query($con,$sql6);
