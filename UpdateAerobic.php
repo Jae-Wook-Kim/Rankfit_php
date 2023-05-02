@@ -20,8 +20,8 @@
     //$userWeight = isset($_POST["userWeight"]) ? $_POST["userWeight"] : -1;
     //$userCount = isset($_POST["userCount"]) ? $_POST["userCount"] : -1;
 
-    $start = isset($_POST["start"]) ? $_POST["start"] : 0;
-    $end = isset($_POST["end"]) ? $_POST["end"] : 0;
+    // $start = isset($_POST["start"]) ? $_POST["start"] : 0;
+    // $end = isset($_POST["end"]) ? $_POST["end"] : 0;
 
     $CustomRank = 0;
 
@@ -63,7 +63,7 @@
         mysqli_query($con,$sql);
         $response = true;
 
-        $sql2 = "UPDATE userTBL SET userTBL.aerobicScore = (SELECT SUM(aerobicTBL.Score) FROM aerobicTBL WHERE aerobicTBL.userID = userTBL.userID AND userDate > '$start' AND userDate < '$end')";
+        $sql2 = "UPDATE userTBL SET userTBL.aerobicScore = (SELECT SUM(aerobicTBL.Score) FROM aerobicTBL WHERE aerobicTBL.userID = userTBL.userID)";
         mysqli_query($con,$sql2);
 
         $sql3 = "UPDATE userTBL SET userTBL.Score = (SELECT SUM(userTBL.anaerobicScore + userTBL.aerobicScore))";
