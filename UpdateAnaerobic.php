@@ -30,7 +30,7 @@
     $result = mysqli_query($con,"SHOW TABLES LIKE '$eng'");
     if (!mysqli_num_rows($result)>0) {
         $sql6 = "CREATE TABLE $eng (
-            -- num int NOT NULL AUTO_INCREMENT,
+            num int NOT NULL AUTO_INCREMENT,
             userID varchar(30) NOT NULL,
             userSex int NOT NULL,
             userAge int NOT NULL,
@@ -68,8 +68,8 @@
     $age = $row9['userAge'];
     $WD = $row9['userWD'];
 
-    // $sql7 = "INSERT INTO $eng VALUES('".$num."','".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
-    $sql7 = "INSERT INTO $eng VALUES('".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
+    $sql7 = "INSERT INTO $eng VALUES('".$num."','".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
+    // $sql7 = "INSERT INTO $eng VALUES('".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
     mysqli_query($con,$sql7);
 //무산소 테이블
     if($userSex != "") {
