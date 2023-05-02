@@ -3,7 +3,7 @@
     $con = mysqli_connect($db_host, $db_user, $db_password, $db_name) or die("MySQL Connection Failed !!");
     mysqli_query($con,'SET NAMES utf8');
 
-    //$num = NULL;
+    $num = NULL;
     $Score = isset($_POST["Score"])? $_POST["Score"] : "";
     $userTime = isset($_POST["userTime"])? $_POST["userTime"] : "";
     $userState = isset($_POST["userState"]) ? $_POST["userState"] : "";
@@ -30,6 +30,7 @@
     $result = mysqli_query($con,"SHOW TABLES LIKE '$eng'");
     if (!mysqli_num_rows($result)>0) {
         $sql6 = "CREATE TABLE $eng (
+            num int NOT NULL AUTO_INCREMENT,
             userID varchar(30) NOT NULL,
             userSex int NOT NULL,
             userAge int NOT NULL,
@@ -67,7 +68,7 @@
     $age = $row9['userAge'];
     $WD = $row9['userWD'];
 
-    $sql7 = "INSERT INTO $eng VALUES('".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
+    $sql7 = "INSERT INTO $eng VALUES('".$num."','".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
     mysqli_query($con,$sql7);
 //무산소 테이블
     if($userSex != "") {
