@@ -13,6 +13,7 @@
     $userDate = isset($_POST["userDate"]) ? $_POST["userDate"] : "";
     $userSex = isset($_POST["userSex"]) ? $_POST["userSex"] : 0;
     $eng = isset($_POST["eng"]) ? $_POST["eng"] : "";
+    $ko = isset($_POST["ko"]) ? $_POST["ko"] : "";
     $uuid = isset($_POST["uuid"]) ? $_POST["uuid"] : "";
 
     //$userSet = isset($_POST["userSet"]) ? $_POST["userSet"] : -1;
@@ -29,15 +30,15 @@
     $result = mysqli_query($con,"SHOW TABLES LIKE '$eng'");
     if (!mysqli_num_rows($result)>0) {
         $sql6 = "CREATE TABLE $eng (
-            num int NOT NULL AUTO_INCREMENT,
+            -- num int NOT NULL AUTO_INCREMENT,
             userID varchar(30) NOT NULL,
             userSex int NOT NULL,
             userAge int NOT NULL,
             userWD varchar(10) NOT NULL,
-            userDate int NOT NULL,
+            -- userDate int NOT NULL,
             Score float NOT NULL,
             CustomRank int NULL,
-            PRIMARY KEY (num)
+            PRIMARY KEY (userID)
             )";
         mysqli_query($con,$sql6);
     }
@@ -48,9 +49,11 @@
     $age = $row9['userAge'];
     $WD = $row9['userWD'];
 
-    $sql7 = "INSERT INTO $eng VALUES('".$num."','".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
-    // $sql7 = "INSERT INTO $eng VALUES('".$userID."','".$userSex."','".$age."','".$WD."','".$userDate."','".$Score."','".$CustomRank."')";
-    mysqli_query($con,$sql7);
+    $result2 = mysqli_query($con,"SELECT userID FROM $eng WHERE userID = '$userID'");
+    if (!mysqli_num_rows($result2)>0) {
+        $sql7 = "INSERT INTO $eng VALUES('".$userID."','".$userSex."','".$age."','".$WD."','".$Score."','".$CustomRank."')";
+        mysqli_query($con,$sql7);
+    }
 
     if($userSex != "") {
         $sql10 = "UPDATE $userID SET userDate = '$userDate', userDistance = '$userDistance', userTime = '$userTime', userState = '$userState' WHERE uuid = '$uuid'";
@@ -75,6 +78,9 @@
             mysqli_query($con,$sql5);
         }
     }
+
+    $sql11 = "UPDATE $eng a LEFT OUTER JOIN (SELECT userID, SUM(Score) as tmp FROM aerobicTBL WHERE userExercise = '$ko' GROUP BY userID) b on b.userID = a.userID SET a.Score = b.tmp";
+    mysqli_query($con,$sql11);
     
     echo json_encode($response);
     mysqli_close($con)
