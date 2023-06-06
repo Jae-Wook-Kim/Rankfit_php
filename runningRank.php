@@ -7,6 +7,22 @@
     // $start = isset($_POST["start"]) ? $_POST["start"] : 0;
     // $end = isset($_POST["end"]) ? $_POST["end"] : 0;
 
+    $result = mysqli_query($con,"SHOW TABLES LIKE 'running'");
+    if (!mysqli_num_rows($result)>0) {
+        $sql6 = "CREATE TABLE $eng (
+            -- num int NOT NULL AUTO_INCREMENT,
+            userID varchar(30) NOT NULL,
+            userSex int NOT NULL,
+            userAge int NOT NULL,
+            userWD varchar(10) NOT NULL,
+            -- userDate int NOT NULL,
+            Score float NOT NULL,
+            CustomRank int NULL,
+            PRIMARY KEY (userID)
+            )";
+        mysqli_query($con,$sql6);
+    }
+
     $sql = "SELECT userID, SUM(Score) tmp FROM running WHERE Score != 0 GROUP BY userID ORDER BY tmp DESC LIMIT 100";
     $result = mysqli_query($con,$sql);
     
