@@ -7,10 +7,8 @@
 
     $uuid = isset($_POST["uuid"]) ? $_POST["uuid"] : "";
 
-    //$test10 = array();
     $test10 = [];
     $response3 = array();
-    //$response2 = array();
 
     if($uuid != "") {
 
@@ -36,12 +34,6 @@
 
             $test10[] = $response3;
         }
-        //$test10["All"] = $test11;
-
-        //$response2["My_Ranking"] = $row3['Ranking'];
-        //$response2["My_Score"] = $row3['Score'];
-
-        //$test10["My"] = $response2;
 
         $json = json_encode($test10, JSON_UNESCAPED_UNICODE);
         echo $json;

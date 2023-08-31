@@ -36,8 +36,6 @@
                     $response3["Time"] = $row['userTime'];
 
                     $test10[] = $response3;
-
-                    //$test11["Anaerobic"] = $test10;
                 }
                 else {
                     $response2["Exercise"] = $row['userExercise'];
@@ -46,14 +44,11 @@
                     $response2["Time"] = $row['userTime'];
 
                     $test[] = $response2;
-
-                    //$test11["Aerobic"] = $test;
                 }
             }
         }
         $test11["Anaerobics"] = $test10;
         $test11["Aerobics"] = $test;
-        //$test11[] = $test10;
 
         $json = json_encode($test11, JSON_NUMERIC_CHECK | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         echo $json;

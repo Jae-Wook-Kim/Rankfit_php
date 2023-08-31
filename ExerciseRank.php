@@ -1,7 +1,6 @@
 <?php
     require("dbset.php");
     $con = mysqli_connect($db_host, $db_user, $db_password, $db_name) or die("MySQL Connection Failed !!");
-    // mysqli_query($con,'SET NAMES utf8');
 
     $userID = isset($_POST["userID"]) ? $_POST["userID"] : "";
     $userSex = isset($_POST["userSex"]) ? $_POST["userSex"] : 0;
@@ -9,9 +8,6 @@
     (int)$age = (int)($userAge / 10) * 10;
     (int)$age2 = $age + 10;
     $eng = isset($_POST["eng"]) ? $_POST["eng"] : "";
-
-    // $start = isset($_POST["start"]) ? $_POST["start"] : 0;
-    // $end = isset($_POST["end"]) ? $_POST["end"] : 0;
 
     $test10 = array();
     $test11 = [];
